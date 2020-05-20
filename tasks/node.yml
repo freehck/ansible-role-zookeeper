@@ -1,0 +1,31 @@
+---
+
+- name: create directories
+  file:
+    path: "{{ item }}"
+    state: directory
+    mode: 0755
+    recurse: true
+  loop:
+    - "{{ zookeeper_srv_dir }}"
+
+- name: create env file
+  template:
+    src: "{{ zookeeper_env_file_template }}"
+    dest: "{{ zookeeper_env_file }}"
+    mode: 0644
+
+- name: zookeeper container
+  docker_container:
+    name: "{{ zookeeper_ct_name }}"
+    image: "{{ zookeeper_ct_image }}"
+    ports:
+      - "{{ zookeeper_bind_ip }}:{{ zookeeper_peerport }}:2888"
+      - "{{ zookeeper_bind_ip }}:{{ zookeeper_leaderport }}:3888"
+      - "{{ zookeeper_bind_ip }}:{{ zookeeper_clientport }}:2181"
+    env_file: "{{ zookeeper_env_file }}"
+    restart_policy: "{{ zookeeper_ct_restart_policy }}"
+    state: "{{ zookeeper_ct_state }}"
+    restart: "{{ zookeeper_ct_restart }}"
+    pull: "{{ zookeeper_ct_pull }}"
+    recreate: "{{ zookeeper_ct_recreate }}"

@@ -1,0 +1,5 @@
+*~
+tests/.vagrant
+tests/retry
+tests/provision/roles/*
+!tests/provision/roles/freehck.zookeeper

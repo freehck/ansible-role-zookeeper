@@ -1,0 +1,14 @@
+---
+
+- hosts: zk01
+  become: true
+  roles:
+    - role: freehck.pkg_install
+      pkg_install_packages:
+        - docker.io
+        - python-pip # just in case of python2, remove later
+    - role: freehck.pip_install
+      pip_install_packages:
+        - docker
+    - role: freehck.zookeeper
+

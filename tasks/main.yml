@@ -1,0 +1,8 @@
+---
+
+- name: create node
+  include_tasks: node.yml
+  loop: "{{ zookeeper_nodes }}"
+  loop_control:
+    loop_var: zookeeper_node
+  when: zookeeper_node.host == inventory_hostname

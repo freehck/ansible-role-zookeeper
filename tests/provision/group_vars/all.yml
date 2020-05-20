@@ -1,0 +1,17 @@
+---
+zookeeper_nodes:
+  - host: zk01
+    id: 1
+    peerport: "2888"
+    leaderport: "3888"
+    clientport: "2181"
+  - host: zk01
+    id: 2
+    peerport: "12888"
+    leaderport: "13888"
+    clientport: "12181"
+  - host: zk01
+    id: 3
+    peerport: "22888"
+    leaderport: "23888"
+    clientport: "22181"
