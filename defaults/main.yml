@@ -1,6 +1,6 @@
 ---
 zookeeper_ct_name: "zookeeper-{{ zookeeper_id }}"
-zookeeper_ct_image: "confluent/zookeeper"
+zookeeper_ct_image: "confluentinc/cp-zookeeper:latest"
 zookeeper_bind_ip: "{{ zookeeper_node.bind_ip | default(backnet_ip) }}"
 zookeeper_peerport: "{{ zookeeper_node.peerport | default(2888) }}"
 zookeeper_leaderport: "{{ zookeeper_node.leaderport | default(3888) }}"
