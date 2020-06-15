@@ -3,3 +3,4 @@ tests/.vagrant
 tests/retry
 tests/provision/roles/*
 !tests/provision/roles/freehck.zookeeper
+/meta/.galaxy_install_info
